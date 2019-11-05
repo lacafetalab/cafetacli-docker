@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  frontend:
+    image: $IMAGE_DEV
+    container_name: $CONTAINER_NAME
+    build:
+      context: ./dev/
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3000
+    #mem_limit: 300m
+    volumes:
+      - ./../application:/application
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
